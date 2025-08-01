@@ -1,13 +1,21 @@
 package com.codewithmosh.store;
 
-public class OrderService {
-    private final PaymentService paymentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-    OrderService(PaymentService paymentService) {
+@Service
+public class OrderService {
+    private PaymentService paymentService;
+
+    public OrderService(PaymentService paymentService) {
         this.paymentService = paymentService;
     }
 
     public void placeOrder() {
         this.paymentService.processPayment(10);
+    }
+
+    public void setPaymentService(PaymentService paymentService) {
+        this.paymentService = paymentService;
     }
 }
